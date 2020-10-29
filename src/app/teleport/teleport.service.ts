@@ -23,4 +23,11 @@ export class TeleportService {
   connect(name: string): Observable<TemplateRef<object | null>> {
     return this.register(name).asObservable();
   }
+
+  disconnect(name: string): void {
+    if (this.teleport[name]) {
+      this.teleport[name].complete();
+      delete this.teleport[name];
+    }
+  }
 }

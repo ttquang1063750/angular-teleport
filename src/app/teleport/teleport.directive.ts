@@ -1,10 +1,10 @@
-import {Directive, ElementRef, Inject, Input, TemplateRef} from '@angular/core';
+import {Directive, ElementRef, Inject, Input, OnDestroy, TemplateRef} from '@angular/core';
 import {TeleportService} from './teleport.service';
 
 @Directive({
   selector: '[coreTeleport]'
 })
-export class TeleportDirective {
+export class TeleportDirective implements OnDestroy {
   @Input('coreTeleport') name: string;
 
   @Input()
@@ -27,5 +27,9 @@ export class TeleportDirective {
     if (activate) {
       this.teleportService.activate(this.name, this.template);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.teleportService.disconnect(this.name);
   }
 }
