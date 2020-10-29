@@ -27,7 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # Usage
-```angular2html
+```html
 <mat-toolbar color="primary">
   <core-teleport name="left"></core-teleport>
   <div class="mat-spacer"></div>
