@@ -12,33 +12,27 @@
     <mat-horizontal-stepper #stepper labelPosition="bottom">
       <mat-step label="Step 1" state="phone">
         <p>Content in step 1</p>
-        <div>
-          <ng-template coreTeleport="left" [activate]="stepper.selectedIndex === 0">
-            <button mat-raised-button matStepperNext>To 2</button>
-          </ng-template>
+        <div *coreTeleport="'left' activate: stepper.selectedIndex === 0">
+          <button mat-raised-button matStepperNext>To 2</button>
         </div>
       </mat-step>
       <mat-step label="Step 2" state="chat">
         <p>Content in step 2</p>
-        <div>
-          <ng-template coreTeleport="left" [activate]="stepper.selectedIndex === 1">
-            <button mat-raised-button matStepperPrevious>Back 1</button>
-          </ng-template>
-          <ng-template coreTeleport="right" [activate]="stepper.selectedIndex === 1">
-            <button mat-raised-button matStepperNext>To 3</button>
-          </ng-template>
-        </div>
+        <ng-template coreTeleport="left" [activate]="stepper.selectedIndex === 1">
+          <button mat-raised-button matStepperPrevious>Back 1</button>
+        </ng-template>
+        <ng-template coreTeleport="right" [activate]="stepper.selectedIndex === 1">
+          <button mat-raised-button matStepperNext>To 3</button>
+        </ng-template>
       </mat-step>
       <mat-step label="Step 3">
         <p>Content in step 3</p>
-        <div>
-          <ng-template coreTeleport="left" [activate]="stepper.selectedIndex === 2">
-            <button mat-raised-button matStepperPrevious>Back 2</button>
-          </ng-template>
-          <ng-template coreTeleport="right" [activate]="stepper.selectedIndex === 2">
-            <button mat-raised-button matStepperNext>Done</button>
-          </ng-template>
-        </div>
+        <ng-template coreTeleport="left" [activate]="stepper.selectedIndex === 2">
+          <button mat-raised-button matStepperPrevious>Back 2</button>
+        </ng-template>
+        <ng-template coreTeleport="right" [activate]="stepper.selectedIndex === 2">
+          <button mat-raised-button matStepperNext>Done</button>
+        </ng-template>
       </mat-step>
 
       <!-- Icon overrides. -->

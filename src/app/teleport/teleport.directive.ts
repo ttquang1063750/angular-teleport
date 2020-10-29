@@ -6,16 +6,26 @@ import {TeleportService} from './teleport.service';
 })
 export class TeleportDirective {
   @Input('coreTeleport') name: string;
+
+  @Input()
+  set coreTeleportActivate(activate: boolean) {
+    this.register(activate);
+  }
+
   @Input()
   set activate(activate: boolean) {
-    if (activate) {
-      this.teleportService.activate(this.name, this.template);
-    }
+    this.register(activate);
   }
 
   constructor(
     private teleportService: TeleportService,
     private template: TemplateRef<any>,
   ) {
+  }
+
+  register(activate: boolean): void {
+    if (activate) {
+      this.teleportService.activate(this.name, this.template);
+    }
   }
 }
