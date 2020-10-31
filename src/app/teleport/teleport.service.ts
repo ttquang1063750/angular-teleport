@@ -5,7 +5,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class TeleportService {
-  private teleport = {};
+  private registers = {};
 
   activate(name: string, template: TemplateRef<object | null>): void {
     const register = this.register(name);
@@ -13,11 +13,11 @@ export class TeleportService {
   }
 
   register(name: string): BehaviorSubject<TemplateRef<object | null>> {
-    if (!this.teleport[name]) {
-      this.teleport[name] = new BehaviorSubject<TemplateRef<object | null>>(null);
+    if (!this.registers[name]) {
+      this.registers[name] = new BehaviorSubject<TemplateRef<object | null>>(null);
     }
 
-    return this.teleport[name];
+    return this.registers[name];
   }
 
   connect(name: string): Observable<TemplateRef<object | null>> {
@@ -25,9 +25,9 @@ export class TeleportService {
   }
 
   disconnect(name: string): void {
-    if (this.teleport[name]) {
-      this.teleport[name].complete();
-      delete this.teleport[name];
+    if (this.registers[name]) {
+      this.registers[name].complete();
+      delete this.registers[name];
     }
   }
 }

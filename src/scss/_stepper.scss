@@ -1,0 +1,121 @@
+:root {
+  --based-color-gray: #8181a5;
+  --based-color-gray-rgb: 129, 129, 165;
+  --based-color-orange: #f06e36;
+  --based-color-orange-rgb: 240, 110, 54;
+  --based-color-white: #ffffff;
+  --based-color-white-rgb: 255, 255, 255;
+  --base-color-purple: #403b57;
+  --base-color-purple-rgb: 64, 59, 87;
+}
+
+.stepper-skin-icon-default {
+  color: var(--based-color-gray);
+  background-color: rgba(var(--based-color-gray-rgb), 0.1);
+}
+
+.stepper-skin-icon-done {
+  color: var(--based-color-white);
+  background-color: var(--based-color-orange);
+}
+
+.stepper-skin-line-default {
+  border-top-color: var(--based-color-gray);
+}
+
+.stepper-skin-line-done {
+  border-top-color: var(--based-color-orange);
+}
+
+.stepper-skin-label-default {
+  color: var(--based-color-gray);
+}
+
+.stepper-skin-label-done {
+  color: var(--based-color-orange);
+}
+
+mat-horizontal-stepper {
+  &.mat-stepper-horizontal {
+    .mat-horizontal-stepper-header-container {
+      padding: 0 100px 40px;
+      $lineTop: 19px;
+
+      .mat-stepper-horizontal-line {
+        top: $lineTop;
+        @extend .stepper-skin-line-done;
+      }
+
+      .mat-step-header {
+        padding: 0;
+
+        &.cdk-program-focused,
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:before,
+        &:after {
+          top: $lineTop;
+          @extend .stepper-skin-line-done;
+        }
+
+        &[aria-selected='true'] {
+          &:after {
+            @extend .stepper-skin-line-default;
+          }
+
+          & ~ {
+            .mat-stepper-horizontal-line {
+              @extend .stepper-skin-line-default;
+            }
+
+            .mat-step-header {
+              &:before,
+              &:after {
+                @extend .stepper-skin-line-default;
+              }
+
+              .mat-step-icon {
+                @extend .stepper-skin-icon-default;
+              }
+
+              .mat-step-label {
+                @extend .stepper-skin-label-default;
+              }
+            }
+          }
+        }
+
+        .mat-step-icon {
+          width: 34px;
+          height: 34px;
+          @extend .stepper-skin-icon-done;
+
+          .mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        .mat-step-label {
+          padding-top: 3px;
+          font-family: Lato, serif;
+          font-size: 12px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.75;
+          letter-spacing: normal;
+          text-align: center;
+          @extend .stepper-skin-label-done;
+        }
+      }
+    }
+
+    .mat-horizontal-content-container {
+      padding: 0;
+    }
+  }
+}
